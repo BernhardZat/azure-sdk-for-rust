@@ -69,6 +69,10 @@ pub fn lease_time_from_headers(headers: &Headers) -> crate::Result<u8> {
     headers.get_as(&LEASE_TIME)
 }
 
+pub fn legal_hold_from_headers(headers: &Headers) -> crate::Result<bool> {
+    headers.get_as(&LEGAL_HOLD)
+}
+
 #[cfg(not(feature = "azurite_workaround"))]
 pub fn delete_type_permanent_from_headers(headers: &Headers) -> crate::Result<bool> {
     headers.get_as(&DELETE_TYPE_PERMANENT)

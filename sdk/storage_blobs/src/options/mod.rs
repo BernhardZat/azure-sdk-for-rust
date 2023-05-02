@@ -16,6 +16,7 @@ mod condition_max_size;
 mod delete_snapshot_method;
 mod encryption_scope;
 mod hash;
+mod legal_hold;
 mod rehydrate_policy;
 mod tags;
 
@@ -35,6 +36,7 @@ pub use condition_max_size::ConditionMaxSize;
 pub use delete_snapshot_method::DeleteSnapshotsMethod;
 pub use encryption_scope::EncryptionScope;
 pub use hash::Hash;
+pub use legal_hold::LegalHold;
 pub use rehydrate_policy::RehydratePriority;
 pub use tags::Tags;
 

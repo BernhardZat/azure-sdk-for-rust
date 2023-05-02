@@ -24,6 +24,7 @@ mod release_lease;
 mod renew_lease;
 mod set_blob_tier;
 mod set_expiry;
+mod set_legal_hold;
 mod set_metadata;
 mod set_properties;
 mod set_tags;

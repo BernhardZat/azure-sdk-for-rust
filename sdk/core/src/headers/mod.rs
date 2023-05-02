@@ -325,6 +325,7 @@ pub const LEASE_ID: HeaderName = HeaderName::from_static("x-ms-lease-id");
 pub const LEASE_STATE: HeaderName = HeaderName::from_static("x-ms-lease-state");
 pub const LEASE_STATUS: HeaderName = HeaderName::from_static("x-ms-lease-status");
 pub const LEASE_TIME: HeaderName = HeaderName::from_static("x-ms-lease-time");
+pub const LEGAL_HOLD: HeaderName = HeaderName::from_static("x-ms-legal-hold");
 pub const LINK: HeaderName = HeaderName::from_static("link");
 pub const LOCATION: HeaderName = HeaderName::from_static("location");
 pub const MAX_ITEM_COUNT: HeaderName = HeaderName::from_static("x-ms-max-item-count");
