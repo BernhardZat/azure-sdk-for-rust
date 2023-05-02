@@ -113,6 +113,10 @@ impl BlobClient {
         SetBlobExpiryBuilder::new(self.clone(), blob_expiry)
     }
 
+    pub fn set_legal_hold(&self, legal_hold: LegalHold) -> SetLegalHoldBuilder {
+        SetLegalHoldBuilder::new(self.clone(), legal_hold)
+    }
+
     /// Creates a new page blob.
     pub fn put_page_blob(&self, length: u128) -> PutPageBlobBuilder {
         PutPageBlobBuilder::new(self.clone(), length)

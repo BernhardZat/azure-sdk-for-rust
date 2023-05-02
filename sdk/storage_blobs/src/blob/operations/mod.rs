@@ -56,6 +56,7 @@ pub use release_lease::*;
 pub use renew_lease::*;
 pub use set_blob_tier::*;
 pub use set_expiry::*;
+pub use set_legal_hold::*;
 pub use set_metadata::*;
 pub use set_properties::*;
 pub use set_tags::*;
