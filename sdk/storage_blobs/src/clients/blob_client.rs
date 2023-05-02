@@ -113,8 +113,13 @@ impl BlobClient {
         SetBlobExpiryBuilder::new(self.clone(), blob_expiry)
     }
 
+    /// Sets a legal hold
     pub fn set_legal_hold(&self, legal_hold: LegalHold) -> SetLegalHoldBuilder {
         SetLegalHoldBuilder::new(self.clone(), legal_hold)
+    }
+
+    pub fn set_immutability(&self, until_date: RetainUntilDate) -> SetImmutabilityBuilder {
+        SetImmutabilityBuilder::new(self.clone(), until_date)
     }
 
     /// Creates a new page blob.

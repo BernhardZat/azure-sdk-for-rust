@@ -16,8 +16,10 @@ mod condition_max_size;
 mod delete_snapshot_method;
 mod encryption_scope;
 mod hash;
+mod immutability_mode;
 mod legal_hold;
 mod rehydrate_policy;
+mod retain_until_date;
 mod tags;
 
 pub use access_tier::AccessTier;
@@ -36,8 +38,10 @@ pub use condition_max_size::ConditionMaxSize;
 pub use delete_snapshot_method::DeleteSnapshotsMethod;
 pub use encryption_scope::EncryptionScope;
 pub use hash::Hash;
+pub use immutability_mode::ImmutabilityMode;
 pub use legal_hold::LegalHold;
 pub use rehydrate_policy::RehydratePriority;
+pub use retain_until_date::RetainUntilDate;
 pub use tags::Tags;
 
 use std::str::FromStr;

@@ -73,6 +73,10 @@ pub fn legal_hold_from_headers(headers: &Headers) -> crate::Result<bool> {
     headers.get_as(&LEGAL_HOLD)
 }
 
+pub fn immutability_mode_from_headers(headers: &Headers) -> crate::Result<String> {
+    headers.get_as(&IMMUTABILITY_MODE)
+}
+
 #[cfg(not(feature = "azurite_workaround"))]
 pub fn delete_type_permanent_from_headers(headers: &Headers) -> crate::Result<bool> {
     headers.get_as(&DELETE_TYPE_PERMANENT)

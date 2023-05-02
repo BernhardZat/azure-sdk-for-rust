@@ -314,6 +314,7 @@ pub const IF_SEQUENCE_NUMBER_EQ: HeaderName = HeaderName::from_static("x-ms-if-s
 pub const IF_SEQUENCE_NUMBER_LE: HeaderName = HeaderName::from_static("x-ms-if-sequence-number-le");
 pub const IF_SEQUENCE_NUMBER_LT: HeaderName = HeaderName::from_static("x-ms-if-sequence-number-lt");
 pub const IF_TAGS: HeaderName = HeaderName::from_static("x-ms-if-tags");
+pub const IMMUTABILITY_MODE: HeaderName = HeaderName::from_static("x-ms-immutability-policy-mode");
 pub const ITEM_COUNT: HeaderName = HeaderName::from_static("x-ms-item-count");
 pub const ITEM_TYPE: HeaderName = HeaderName::from_static("x-ms-item-type");
 pub const KEEP_ALIVE: HeaderName = HeaderName::from_static("keep-alive");
@@ -345,6 +346,7 @@ pub const REQUEST_ID: HeaderName = HeaderName::from_static("x-ms-request-id");
 pub const REQUEST_SERVER_ENCRYPTED: HeaderName =
     HeaderName::from_static("x-ms-request-server-encrypted");
 pub const REQUIRES_SYNC: HeaderName = HeaderName::from_static("x-ms-requires-sync");
+pub const RETAIN_UNTIL_DATE: HeaderName = HeaderName::from_static("x-ms-immutability-policy-until-date");
 pub const RETRY_AFTER: HeaderName = HeaderName::from_static("retry-after");
 pub const SERVER: HeaderName = HeaderName::from_static("server");
 pub const SERVER_ENCRYPTED: HeaderName = HeaderName::from_static("x-ms-server-encrypted");
