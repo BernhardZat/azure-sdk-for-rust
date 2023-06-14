@@ -7,7 +7,7 @@ use serde_json::{Map, Value};
 use std::fmt::{Debug, Display};
 use time::OffsetDateTime;
 
-/// A KeyBundle consisting of a WebKey plus its attributes.
+/// A `KeyBundle` consisting of a `WebKey` plus its attributes.
 #[derive(Debug, Deserialize)]
 pub struct KeyVaultKey {
     /// The key management properties.
@@ -401,5 +401,12 @@ pub struct EncryptResult {
         serialize_with = "ser_base64",
         deserialize_with = "deser_base64"
     )]
+    pub result: Vec<u8>,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct GetRandomBytesResult {
+    /// `value` is encoded as a base64url string.
+    #[serde(rename = "value", deserialize_with = "deser_base64")]
     pub result: Vec<u8>,
 }

@@ -1135,16 +1135,16 @@ impl NameAvailability {
         Self::default()
     }
 }
-#[doc = "Network properties of a server"]
+#[doc = "Network properties of a server."]
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize, Default)]
 pub struct Network {
     #[doc = "public network access is enabled or not"]
     #[serde(rename = "publicNetworkAccess", default, skip_serializing_if = "Option::is_none")]
     pub public_network_access: Option<network::PublicNetworkAccess>,
-    #[doc = "delegated subnet arm resource id."]
+    #[doc = "Delegated subnet arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone."]
     #[serde(rename = "delegatedSubnetResourceId", default, skip_serializing_if = "Option::is_none")]
     pub delegated_subnet_resource_id: Option<String>,
-    #[doc = "private dns zone arm resource id."]
+    #[doc = "Private dns zone arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone."]
     #[serde(rename = "privateDnsZoneArmResourceId", default, skip_serializing_if = "Option::is_none")]
     pub private_dns_zone_arm_resource_id: Option<String>,
 }
@@ -1337,11 +1337,7 @@ impl ProxyResource {
 pub enum ReplicationRole {
     None,
     Primary,
-    Secondary,
-    WalReplica,
-    SyncReplica,
     AsyncReplica,
-    GeoSyncReplica,
     GeoAsyncReplica,
     #[serde(skip_deserializing)]
     UnknownValue(String),
@@ -1370,12 +1366,8 @@ impl Serialize for ReplicationRole {
         match self {
             Self::None => serializer.serialize_unit_variant("ReplicationRole", 0u32, "None"),
             Self::Primary => serializer.serialize_unit_variant("ReplicationRole", 1u32, "Primary"),
-            Self::Secondary => serializer.serialize_unit_variant("ReplicationRole", 2u32, "Secondary"),
-            Self::WalReplica => serializer.serialize_unit_variant("ReplicationRole", 3u32, "WalReplica"),
-            Self::SyncReplica => serializer.serialize_unit_variant("ReplicationRole", 4u32, "SyncReplica"),
-            Self::AsyncReplica => serializer.serialize_unit_variant("ReplicationRole", 5u32, "AsyncReplica"),
-            Self::GeoSyncReplica => serializer.serialize_unit_variant("ReplicationRole", 6u32, "GeoSyncReplica"),
-            Self::GeoAsyncReplica => serializer.serialize_unit_variant("ReplicationRole", 7u32, "GeoAsyncReplica"),
+            Self::AsyncReplica => serializer.serialize_unit_variant("ReplicationRole", 2u32, "AsyncReplica"),
+            Self::GeoAsyncReplica => serializer.serialize_unit_variant("ReplicationRole", 3u32, "GeoAsyncReplica"),
             Self::UnknownValue(s) => serializer.serialize_str(s.as_str()),
         }
     }
@@ -1665,7 +1657,7 @@ pub struct ServerProperties {
     #[doc = "Backup properties of a server"]
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub backup: Option<Backup>,
-    #[doc = "Network properties of a server"]
+    #[doc = "Network properties of a server."]
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub network: Option<Network>,
     #[doc = "High availability properties of a server"]
@@ -1825,6 +1817,9 @@ pub struct ServerPropertiesForUpdate {
     #[doc = "Used to indicate role of the server in replication set."]
     #[serde(rename = "replicationRole", default, skip_serializing_if = "Option::is_none")]
     pub replication_role: Option<ReplicationRole>,
+    #[doc = "Network properties of a server."]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub network: Option<Network>,
 }
 impl ServerPropertiesForUpdate {
     pub fn new() -> Self {
@@ -2131,7 +2126,6 @@ pub mod user_assigned_identity {
     #[serde(remote = "Type")]
     pub enum Type {
         None,
-        SystemAssigned,
         UserAssigned,
         #[serde(skip_deserializing)]
         UnknownValue(String),
@@ -2159,8 +2153,7 @@ pub mod user_assigned_identity {
         {
             match self {
                 Self::None => serializer.serialize_unit_variant("Type", 0u32, "None"),
-                Self::SystemAssigned => serializer.serialize_unit_variant("Type", 1u32, "SystemAssigned"),
-                Self::UserAssigned => serializer.serialize_unit_variant("Type", 2u32, "UserAssigned"),
+                Self::UserAssigned => serializer.serialize_unit_variant("Type", 1u32, "UserAssigned"),
                 Self::UnknownValue(s) => serializer.serialize_str(s.as_str()),
             }
         }
