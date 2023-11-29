@@ -19,9 +19,7 @@ impl SetImmutabilityBuilder {
             let mut headers = Headers::new();
             headers.add(self.retain_until_date);
 
-            let mut request =
-                self.client
-                    .finalize_request(url, azure_core::Method::Put, headers, None)?;
+            let mut request = BlobClient::finalize_request(url, azure_core::Method::Put, headers, None)?;
 
             let response = self.client.send(&mut self.context, &mut request).await?;
             response.try_into()
